@@ -97,13 +97,9 @@ const DataGrid = () => {
         const field = sort.replace("-", "") as keyof Reseller;
         console.log("sort", field);
         if (sort.indexOf("-") !== -1) {
-          return a[field]
-            .toLocaleLowerCase()
-            .localeCompare(b[field].toLocaleLowerCase());
+          return a[field].toLowerCase().localeCompare(b[field].toLowerCase());
         } else {
-          return b[field]
-            .toLocaleLowerCase()
-            .localeCompare(a[field].toLocaleLowerCase());
+          return b[field].toLowerCase().localeCompare(a[field].toLowerCase());
         }
       });
       return sorteredList;

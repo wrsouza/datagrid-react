@@ -8,7 +8,7 @@ export const useResellers = () => {
   const [perPage, setPerPage] = useState<number>(25);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [search, setSearch] = useState<string>("");
-  const [sort, setSort] = useState<string>("");
+  const [sort, setSort] = useState<string>("_id");
   const [fromDate, setFromDate] = useState<string>("");
   const [toDate, setToDate] = useState<string>("");
 
