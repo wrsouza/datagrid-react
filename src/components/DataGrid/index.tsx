@@ -95,13 +95,16 @@ const DataGrid = () => {
       const sorteredList = [...list];
       sorteredList.sort((a, b) => {
         const field = sort.replace("-", "") as keyof Reseller;
+        console.log("sort", field);
         if (sort.indexOf("-") !== -1) {
-          return a[field].localeCompare(b[field]);
+          return a[field]
+            .toLocaleLowerCase()
+            .localeCompare(b[field].toLocaleLowerCase());
+        } else {
+          return b[field]
+            .toLocaleLowerCase()
+            .localeCompare(a[field].toLocaleLowerCase());
         }
-        if (sort === "desc") {
-          return b[field].localeCompare(a[field]);
-        }
-        return 0;
       });
       return sorteredList;
     };
