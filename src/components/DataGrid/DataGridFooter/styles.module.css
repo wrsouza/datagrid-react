@@ -1,0 +1,12 @@
+.datagrid-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #aaa;
+  color: #333;
+}
+
+.datagrid-footer span {
+  font-size: 11px;
+}

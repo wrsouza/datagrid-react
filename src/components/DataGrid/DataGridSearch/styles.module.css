@@ -1,0 +1,35 @@
+.datagrid-search {
+  display: flex;
+  padding: 10px 0;
+}
+
+.datagrid-search-form {
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  padding: 8px 8px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+}
+
+.datagrid-search-icon {
+  color: #333;
+  height: 20px;
+  line-height: 20px;
+}
+
+.datagrid-search-input {
+  display: flex;
+  padding-left: 8px;
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  color: #000;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.datagrid-search-input::placeholder {
+  color: #333;
+}

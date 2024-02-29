@@ -1,0 +1,112 @@
+.select-filter {
+  position: relative;
+  padding: 0 3px;
+}
+
+.select-filter-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 5px;
+  border-radius: 3px;
+  background-color: #ededed;
+}
+
+.select-filter-container-active {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 5px;
+  border-radius: 3px;
+  color: #fff;
+  background-color: green;
+}
+
+.select-filter-container-text {
+  padding-right: 5px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+.select-filter-container-icon {
+}
+
+.select-filter-popup-bg {
+  display: none;
+}
+
+.select-filter-popup-bg-active {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 8;
+}
+
+.select-filter-popup {
+  display: none;
+}
+
+.select-filter-popup-active {
+  position: absolute;
+  display: flex;
+  top: 50px;
+  left: 0;
+  width: 160px;
+  height: 250px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.select-filter-popup-active ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  list-style: none;
+  overflow-y: scroll;
+}
+
+.select-filter-popup-active ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+.select-filter-popup-active ul::-webkit-scrollbar-track {
+  background: #ededed;
+  border-radius: 10px;
+}
+
+.select-filter-popup-active ul::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.select-filter-popup-active ul::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.select-filter-popup-active ul li {
+  display: flex;
+  margin-right: 8px;
+  padding: 10px;
+  font-size: 12px;
+  color: #333;
+  line-height: 18px;
+  cursor: pointer;
+}
+
+.select-filter-popup-active ul li:hover {
+  background-color: #ededed;
+}
+
+.active {
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff !important;
+  background-color: green;
+}

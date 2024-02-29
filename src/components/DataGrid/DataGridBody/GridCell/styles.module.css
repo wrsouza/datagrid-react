@@ -1,0 +1,36 @@
+.grid-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8px;
+}
+
+.grid-cell span {
+  font-size: 11px;
+  color: #333;
+}
+
+.grid-cell:nth-child(1) {
+  width: 28%;
+}
+
+.grid-cell:nth-child(2) {
+  width: 14%;
+}
+
+.grid-cell:nth-child(3) {
+  width: 13%;
+}
+
+.grid-cell:nth-child(4) {
+  width: 12%;
+}
+
+.grid-cell:nth-child(5) {
+  width: 18%;
+}
+
+.grid-cell:nth-child(6) {
+  width: 15%;
+}
