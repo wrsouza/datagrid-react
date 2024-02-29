@@ -9,10 +9,11 @@ import { DataGridHeader } from "./DataGridHeader";
 import { useEffect, useState } from "react";
 import { Reseller } from "../../pages/api/resellers";
 import axios from "axios";
+import { useResellers } from "../../hooks/resellers.hook";
 
 const DataGrid = () => {
+  const { list, setList, sort, setSort } = useResellers();
   const [selected, setSelected] = useState<string>("");
-  const [sort, setSort] = useState<string>("");
   const fields = [
     {
       fieldName: "Nombre",
@@ -76,7 +77,6 @@ const DataGrid = () => {
       setSelected,
     },
   ];
-  const [list, setList] = useState<Reseller[]>([]);
 
   useEffect(() => {
     const getList = async () => {
@@ -86,6 +86,7 @@ const DataGrid = () => {
 
     getList();
   }, []);
+
   return (
     <div className={styles.datagrid}>
       <DataGridTitle />

@@ -1,3 +1,4 @@
+import { Reseller } from "../../../pages/api/resellers";
 import { Pagination } from "./Pagination";
 import styles from "./styles.module.css";
 
