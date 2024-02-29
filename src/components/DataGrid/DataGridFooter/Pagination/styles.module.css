@@ -1,5 +1,5 @@
 .pagination {
   display: flex;
   flex-direction: row;
-  background-color: lightpink;
+  padding-top: 10px;
 }

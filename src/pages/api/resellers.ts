@@ -45,7 +45,7 @@ export default function handler(
   res: NextApiResponse<Reseller[]>
 ) {
   let resellers = [];
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 500; i++) {
     resellers.push({
       _id: faker.database.mongodbObjectId(),
       name: faker.person.fullName(),

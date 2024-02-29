@@ -4,7 +4,7 @@
   flex-direction: column;
   flex: 1;
   min-height: 300px;
-  max-height: calc(80vh - 280px);
+  max-height: calc(80vh - 300px);
 }
 
 .datagrid-body-container {

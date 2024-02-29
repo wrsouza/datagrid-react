@@ -5,18 +5,17 @@ import {
   FaCircleNotch,
   FaMinus,
 } from "react-icons/fa";
-import { Reseller } from "../../../pages/api/resellers";
 import { GridCell } from "./GridCell";
 
 import styles from "./styles.module.css";
 import { useResellers } from "../../../hooks/resellers.hook";
+import { Reseller } from "../../../pages/api/resellers";
 
 interface DataGridBodyProps {
   list: Reseller[];
 }
 
 export const DataGridBody: FC<DataGridBodyProps> = ({ list }) => {
-  const { filteredList } = useResellers();
   function getAcceptanceIcon(text: string): ReactNode {
     switch (text) {
       case "Aceptado":
@@ -34,7 +33,7 @@ export const DataGridBody: FC<DataGridBodyProps> = ({ list }) => {
   return (
     <div className={styles["datagrid-body"]}>
       <div className={styles["datagrid-body-container"]}>
-        {filteredList.map((item) => (
+        {list.map((item) => (
           <div key={item._id} className={styles["datagrid-body-row"]}>
             <GridCell text={item.name} getIcon={() => null} />
             <GridCell text={item.phone} getIcon={() => null} />

@@ -13,41 +13,8 @@ export const useResellers = () => {
   const [toDate, setToDate] = useState<string>("");
 
   function changePage(page: any) {
-    if (page === "prev") {
-    }
-    if (page === "next") {
-    }
+    setPage(page);
   }
-
-  useEffect(() => {
-    const getSorteredList = () => {
-      return list.sort((a, b) => {
-        const field = sort.replace("-", "") as keyof Reseller;
-        if (sort.indexOf("-") !== -1) {
-          return a[field].localeCompare(b[field]);
-        }
-        if (sort === "desc") {
-          return b[field].localeCompare(a[field]);
-        }
-        return 0;
-      });
-    };
-
-    const getFilteredList = () => {
-      const sorteredList = getSorteredList();
-      const newList = [];
-      const initial = (page - 1) * perPage;
-      const final = initial + perPage;
-      const total = final > totalPages ? totalPages : final;
-      setTotalPages(total);
-      for (let i = initial; i < total; i++) {
-        newList.push(sorteredList[i]);
-      }
-      setFilteredList(newList);
-    };
-
-    getFilteredList();
-  }, [list, sort, page]);
 
   return {
     list,

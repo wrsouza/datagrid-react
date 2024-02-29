@@ -1,13 +1,17 @@
 import { FC } from "react";
 import styles from "./styles.module.css";
 
-interface PageItemProps {
+interface PageNumberProps {
   text: any;
   changePage: () => void;
   active: boolean;
 }
 
-export const PageItem: FC<PageItemProps> = ({ text, changePage, active }) => {
+export const PageNumber: FC<PageNumberProps> = ({
+  text,
+  changePage,
+  active,
+}) => {
   return (
     <div
       onClick={changePage}

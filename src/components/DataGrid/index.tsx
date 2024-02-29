@@ -12,7 +12,19 @@ import axios from "axios";
 import { useResellers } from "../../hooks/resellers.hook";
 
 const DataGrid = () => {
-  const { list, setList, sort, setSort } = useResellers();
+  const {
+    page,
+    filteredList,
+    setFilteredList,
+    perPage,
+    list,
+    setList,
+    sort,
+    setSort,
+    setTotalPages,
+    totalPages,
+    changePage,
+  } = useResellers();
   const [selected, setSelected] = useState<string>("");
   const fields = [
     {
@@ -79,11 +91,47 @@ const DataGrid = () => {
   ];
 
   useEffect(() => {
+    const getSorteredList = () => {
+      const sorteredList = [...list];
+      sorteredList.sort((a, b) => {
+        const field = sort.replace("-", "") as keyof Reseller;
+        if (sort.indexOf("-") !== -1) {
+          return a[field].localeCompare(b[field]);
+        }
+        if (sort === "desc") {
+          return b[field].localeCompare(a[field]);
+        }
+        return 0;
+      });
+      return sorteredList;
+    };
+
+    const getFilteredList = () => {
+      const sorteredList = getSorteredList();
+      const newList = [];
+      const initial = (page - 1) * perPage;
+      const final = initial + perPage;
+      const total = final > list.length ? list.length : final;
+      for (let i = initial; i < total; i++) {
+        newList.push(sorteredList[i]);
+      }
+      setFilteredList(newList);
+    };
+    if (list.length > 0) {
+      getFilteredList();
+    }
+  }, [sort, page, list]);
+
+  useEffect(() => {
     const getList = async () => {
       const { data } = await axios.get("/api/resellers");
       setList(data);
+      const total =
+        data.length % perPage === 0
+          ? data.length / perPage
+          : Math.floor(data.length / perPage) + 1;
+      setTotalPages(total);
     };
-
     getList();
   }, []);
 
@@ -93,8 +141,12 @@ const DataGrid = () => {
       <DataGridSearch />
       <DataGridFilters />
       <DataGridHeader fields={fields} />
-      <DataGridBody list={list} />
-      <DataGridFooter />
+      <DataGridBody list={filteredList} />
+      <DataGridFooter
+        page={page}
+        totalPages={totalPages}
+        changePage={changePage}
+      />
     </div>
   );
 };
