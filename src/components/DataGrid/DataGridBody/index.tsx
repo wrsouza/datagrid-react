@@ -8,14 +8,10 @@ import {
 import { GridCell } from "./GridCell";
 
 import styles from "./styles.module.css";
-import { useResellers } from "../../../hooks/resellers.hook";
-import { Reseller } from "../../../pages/api/resellers";
+import { useReseller } from "../../../contexts/reseller";
 
-interface DataGridBodyProps {
-  list: Reseller[];
-}
-
-export const DataGridBody: FC<DataGridBodyProps> = ({ list }) => {
+export const DataGridBody: FC = () => {
+  const { filteredList } = useReseller();
   function getAcceptanceIcon(text: string): ReactNode {
     switch (text) {
       case "Aceptado":
@@ -30,20 +26,21 @@ export const DataGridBody: FC<DataGridBodyProps> = ({ list }) => {
         return null;
     }
   }
+
   return (
     <div className={styles["datagrid-body"]}>
       <div className={styles["datagrid-body-container"]}>
-        {list.map((item) => (
-          <div key={item._id} className={styles["datagrid-body-row"]}>
-            <GridCell text={item.name} getIcon={() => null} />
-            <GridCell text={item.phone} getIcon={() => null} />
-            <GridCell text={item.createdAt} getIcon={() => null} />
+        {filteredList.map((item) => (
+          <div key={item?._id} className={styles["datagrid-body-row"]}>
+            <GridCell text={item?.name} getIcon={() => null} />
+            <GridCell text={item?.phone} getIcon={() => null} />
+            <GridCell text={item?.createdAt} getIcon={() => null} />
             <GridCell
-              text={item.acceptanceOfTerms}
+              text={item?.acceptanceOfTerms}
               getIcon={getAcceptanceIcon}
             />
-            <GridCell text={item.biometrics} getIcon={() => null} />
-            <GridCell text={item.status} getIcon={() => null} />
+            <GridCell text={item?.biometrics} getIcon={() => null} />
+            <GridCell text={item?.status} getIcon={() => null} />
           </div>
         ))}
       </div>

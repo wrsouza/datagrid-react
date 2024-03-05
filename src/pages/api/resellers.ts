@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { faker } from "@faker-js/faker";
 
-export interface Reseller {
+export interface IReseller {
   _id: string;
   name: string;
   phone: string;
@@ -42,7 +42,7 @@ function getRandomStatus() {
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Reseller[]>
+  res: NextApiResponse<IReseller[]>
 ) {
   let resellers = [];
   for (let i = 0; i < 500; i++) {
